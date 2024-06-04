@@ -1,0 +1,60 @@
+services:
+  api1:
+    build: ./car-wash
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db1:5432/car-washes-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: JosBarros@7
+    depends_on:
+      - db1
+
+  db1:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: car-washes-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: JosBarros@7
+    ports:
+      - "54321:5432"
+
+  api2:
+    build: ./medical-appointment
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db2:5432/medical-appointments-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: JosBarros@7
+    depends_on:
+      - db2
+
+  db2:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: medical-appointments-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: JosBarros@7
+    ports:
+      - "54322:5432"
+
+  api3:
+    build: ./gateway
+    ports:
+      - "8083:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db3:5432/users-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: JosBarros@7
+    depends_on:
+      - db3
+
+  db3:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: users-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: JosBarros@7
+    ports:
+      - "54323:5432"
