@@ -1,8 +1,8 @@
-package com.agendei.projetoagendei.dtos.medicalAppointment;
+package com.agendei.projetoagendei.dtos.carWash;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record MedicalAppointmentRecordDto(
+public record CarWashRecordDto(
         @NotBlank String patientId,
         @NotBlank String dateMedicalAppointment,
         @NotBlank String hourMedicalAppointment,

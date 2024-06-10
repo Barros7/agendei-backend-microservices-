@@ -1,4 +1,4 @@
-package com.agendei.projetoagendei.controller.medicalAppointment;
+package com.agendei.projetoagendei.controller.carWash;
 
 import java.util.UUID;
 import java.util.List;
@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
-import com.agendei.projetoagendei.dtos.medicalAppointment.MedicalAppointmentRecordDto;
-import com.agendei.projetoagendei.model.medicalAppointment.MedicalAppointmentModel;
-import com.agendei.projetoagendei.repository.medicalAppointment.MedicalAppointmentRepository;
+
+import com.agendei.projetoagendei.dtos.carWash.CarWashRecordDto;
+import com.agendei.projetoagendei.model.carWash.CarWashModel;
+import com.agendei.projetoagendei.repository.carWash.CarWashRepository;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,29 +22,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController
-public class MedicalAppointmentController {
+public class CarWashController {
     
     @Autowired
-    MedicalAppointmentRepository medicalAppointmentRepository;
+    CarWashRepository carWashRepository;
     
     // Post new record
-    @PostMapping("/medical-appointments")
-    public ResponseEntity<MedicalAppointmentModel> saveMedicalAppointment(@RequestBody @Valid MedicalAppointmentRecordDto medicalAppointmentRecordDto) {
-        var medicalAppointmentModel = new MedicalAppointmentModel();
+    @PostMapping("/car-wash")
+    public ResponseEntity<CarWashModel> saveMedicalAppointment(@RequestBody @Valid CarWashRecordDto medicalAppointmentRecordDto) {
+        var medicalAppointmentModel = new CarWashModel();
         BeanUtils.copyProperties(medicalAppointmentRecordDto, medicalAppointmentModel);
-        return ResponseEntity.status(HttpStatus.CREATED).body(medicalAppointmentRepository.save(medicalAppointmentModel));
+        return ResponseEntity.status(HttpStatus.CREATED).body(carWashRepository.save(medicalAppointmentModel));
     }
     
     // Get all record medicalAppointment
-    @GetMapping("/medical-appointments")
-    public ResponseEntity<List<MedicalAppointmentModel>> getAllMedicalAppointments() {
-        return ResponseEntity.status(HttpStatus.OK).body(medicalAppointmentRepository.findAll());
+    @GetMapping("/car-wash")
+    public ResponseEntity<List<CarWashModel>> getAllMedicalAppointments() {
+        return ResponseEntity.status(HttpStatus.OK).body(carWashRepository.findAll());
     }
     
     // Get unique record medicalAppointment
-    @GetMapping("/medical-appointments/{id}")
+    @GetMapping("/car-wash/{id}")
     public ResponseEntity<Object> getOneMedicalAppointment(@PathVariable(value="id") UUID id) {
-        Optional<MedicalAppointmentModel> medicalAppointmentModel = medicalAppointmentRepository.findById(id);
+        Optional<CarWashModel> medicalAppointmentModel = carWashRepository.findById(id);
         if(medicalAppointmentModel.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No record!");
         }
@@ -50,25 +52,25 @@ public class MedicalAppointmentController {
     }
     
     // Update medicalAppointment record
-    @PutMapping("/medical-appointments/{id}")
-    public ResponseEntity<Object> updateMedicalAppointment(@PathVariable(value = "id") UUID id, @RequestBody @Valid MedicalAppointmentRecordDto medicalAppointmentRecordDto) {
-        Optional<MedicalAppointmentModel> medicalAppointment = medicalAppointmentRepository.findById(id);
+    @PutMapping("/car-wash/{id}")
+    public ResponseEntity<Object> updateMedicalAppointment(@PathVariable(value = "id") UUID id, @RequestBody @Valid CarWashRecordDto medicalAppointmentRecordDto) {
+        Optional<CarWashModel> medicalAppointment = carWashRepository.findById(id);
         if(medicalAppointment.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No record!");
         }
         var medicalAppointmentModel = medicalAppointment.get();
         BeanUtils.copyProperties(medicalAppointmentRecordDto, medicalAppointmentModel);
-        return ResponseEntity.status(HttpStatus.OK).body(medicalAppointmentRepository.save(medicalAppointmentModel));
+        return ResponseEntity.status(HttpStatus.OK).body(carWashRepository.save(medicalAppointmentModel));
     }
     
     // Delete medicalAppointment record
-    @DeleteMapping("/medical-appointments/{id}")
+    @DeleteMapping("/car-wash/{id}")
     public ResponseEntity<Object> deleteMedicalAppointment(@PathVariable(value = "id") UUID id) {
-        Optional<MedicalAppointmentModel> medicalAppointment = medicalAppointmentRepository.findById(id);
+        Optional<CarWashModel> medicalAppointment = carWashRepository.findById(id);
         if(medicalAppointment.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No record!");
         }
-        medicalAppointmentRepository.delete(medicalAppointment.get());
+        carWashRepository.delete(medicalAppointment.get());
         return ResponseEntity.status(HttpStatus.OK).body("Record deleted successfully");
     }
 }

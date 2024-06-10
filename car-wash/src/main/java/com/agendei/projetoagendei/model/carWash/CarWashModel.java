@@ -1,4 +1,4 @@
-package com.agendei.projetoagendei.model.medicalAppointment;
+package com.agendei.projetoagendei.model.carWash;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TB_MEDICAL_APPOINTMENTS")
-public class MedicalAppointmentModel implements Serializable {
+public class CarWashModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
