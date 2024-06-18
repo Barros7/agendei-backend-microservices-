@@ -29,7 +29,7 @@ public class CarWashAppointmentController {
     CarWashAppointmentRepository carWashAppointmentRepository;
     
     // Post new record
-    @PostMapping("/car-wash-appointment")
+    @PostMapping("/car-wash-appointments")
     public ResponseEntity<CarWashAppointmentModel> saveCarWashAppointment(@RequestBody @Valid CarWashAppointmentRecordDto carWashAppointmentRecordDto) {
         var carWashAppointmentModel = new CarWashAppointmentModel();
         BeanUtils.copyProperties(carWashAppointmentRecordDto, carWashAppointmentModel);
@@ -37,13 +37,13 @@ public class CarWashAppointmentController {
     }
     
     // Get all record carWash
-    @GetMapping("/car-wash-appointment")
+    @GetMapping("/car-wash-appointments")
     public ResponseEntity<List<CarWashAppointmentModel>> getAllCarWashAppointment() {
         return ResponseEntity.status(HttpStatus.OK).body(carWashAppointmentRepository.findAll());
     }
     
     // Get unique record carWash
-    @GetMapping("/car-wash-appointment/{id}")
+    @GetMapping("/car-wash-appointments/{id}")
     public ResponseEntity<Object> getOneCarWashAppointment(@PathVariable(value="id") UUID id) {
         Optional<CarWashAppointmentModel> carWashAppointmentModel = carWashAppointmentRepository.findById(id);
         if(carWashAppointmentModel.isEmpty()){
@@ -53,7 +53,7 @@ public class CarWashAppointmentController {
     }
     
     // Update carWash record
-    @PutMapping("/car-wash-appointment/{id}")
+    @PutMapping("/car-wash-appointments/{id}")
     public ResponseEntity<Object> updateCarWashAppointment(@PathVariable(value = "id") UUID id, @RequestBody @Valid CarWashAppointmentRecordDto carWashAppointmentRecordDto) {
         Optional<CarWashAppointmentModel> carWash = carWashAppointmentRepository.findById(id);
         if(carWash.isEmpty()){
@@ -65,7 +65,7 @@ public class CarWashAppointmentController {
     }
     
     // Delete carWash record
-    @DeleteMapping("/car-wash-appointment/{id}")
+    @DeleteMapping("/car-wash-appointments/{id}")
     public ResponseEntity<Object> deleteCarWashAppointment(@PathVariable(value = "id") UUID id) {
         Optional<CarWashAppointmentModel> carWash = carWashAppointmentRepository.findById(id);
         if(carWash.isEmpty()){
