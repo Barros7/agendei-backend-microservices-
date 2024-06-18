@@ -18,31 +18,68 @@ public class CarWashModel implements Serializable {
     
     // Declaração de variáveis
     private UUID carWashId;
-    private String dateCarWash;
-    private String hourCarWash;
-    private String carWashState;
+    private String name;
+    private String address;
+    private String postalCode;
+    private String phoneNumber;
+    private String serviceManager;
+    private String speciality;
+    private String price;
 
-    public String getDateCarWash() {
-        return dateCarWash;
+    public String getName() {
+        return name;
     }
-    
-    public void setDateCarWash(String dateCarWash) {
-        this.dateCarWash = dateCarWash;
+
+    public void setName(String name) {
+        this.name = name;
     }
-    
-    public String getHourCarWash() {
-        return hourCarWash;
+
+    public String getAddress() {
+        return address;
     }
-    
-    public void setHourCarWash(String hourCarWash) {
-        this.hourCarWash = hourCarWash;
+
+    public void setAddress(String address) {
+        this.address = address;
     }
-    
-    public String getCarWashState() {
-        return carWashState;
+
+    public String getPostalCode() {
+        return postalCode;
     }
-    
-    public void setCarWashState(String carWashState) {
-        this.carWashState = carWashState;
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getServiceManager() {
+        return serviceManager;
+    }
+
+    public void setServiceManager(String serviceManager) {
+        this.serviceManager = serviceManager;
+    }
+
+    public String getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
 }
