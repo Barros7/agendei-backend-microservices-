@@ -1,7 +1,8 @@
-# ProjetoAgendei API Microservices
+# README - Projeto Agendei Microservices
 
-## Descrição
-Este projeto fornece uma API REST usando arquitetura em microservices para o sistema de agendamento `ProjetoAgendei`, permitindo operações de CRUD para gerenciamento de agendamentos de diversos tipos de serviços. A API está construída utilizando Java Spring Boot 3.
+## Sobre o Projeto
+
+O Projeto Agendei é um sistema baseado em microserviços para gerenciamento de clínicas médicas, lavagens de carros e um gateway. O projeto utiliza Spring Boot e Docker para orquestrar os serviços.
 
 ## Estrutura do Projeto
 Aqui está a estrutura de diretórios do projeto:
@@ -17,26 +18,71 @@ Aqui está a estrutura de diretórios do projeto:
   - `service`: Camada de serviços que contém a lógica de negócios.
 - `test`: Diretório para testes unitários e de integração.
 
+O projeto está dividido em três microserviços principais:
+
+- **Car Wash:** Gerenciamento de serviços de lavagem de carros.
+- **Medical Appointment:** Gerenciamento de clínicas e consultas médicas.
+- **Gateway:** Gateway para roteamento de solicitações entre os serviços.
+
 ## Pré-requisitos
-- Java JDK 11 ou superior
-- Maven 3.6 ou superior
+
+Antes de iniciar, certifique-se de ter instalado:
+- JDK 17
+- Docker e Docker Compose
+- Maven (para gestão de dependências e build do projeto Java)
 
 ## Configuração e Instalação
-1. Clone o repositório do projeto:
+
+1. **Clonar o repositório:**
    ```
-   git clone https://github.com/Barros7/agendei
+   git clone [URL_DO_REPOSITORIO]
+   cd agendei-backend-microservices-
    ```
-2. Navegue até o diretório do projeto e instale as dependências:
+
+2. **Construção dos serviços:**
+   Cada microserviço precisa ser construído separadamente utilizando Maven.
    ```
-   mvn install
+   cd [nome_do_microservico]
+   ./mvnw clean install
    ```
-3. Execute a aplicação:
+
+3. **Docker:**
+   Utilize o Docker Compose para criar e iniciar todos os serviços:
    ```
-   mvn spring-boot:run
+   docker-compose up --build
    ```
 
 ## Uso
-Para interagir com a API, você pode utilizar ferramentas como Reqbin, Insomnia, Postman ou cURL. Exemplo de requisição para listar utilizadores:
-```
-curl -X GET http://localhost:8080/users
-```
+
+Após a inicialização dos serviços via Docker, os microserviços estarão disponíveis nos seguintes portos:
+
+- **Car Wash:** http://localhost:8081
+- **Medical Appointment:** http://localhost:8082
+- **Gateway:** http://localhost:8083
+
+## Documentação da API
+
+Cada microserviço possui endpoints definidos para operações CRUD. 
+Por exemplo, o microserviço Medical Appointment disponibiliza:
+
+- **POST /clinics** - Adiciona uma nova clínica
+- **GET /clinics** - Lista todas as clínicas
+- **GET /clinics/{id}** - Detalhes de uma clínica específica
+- **PUT /clinics/{id}** - Atualiza uma clínica existente
+- **DELETE /clinics/{id}** - Remove uma clínica
+
+O microserviço Car Wash disponibiliza:
+
+- **POST /car-wash** - Adiciona uma nova officina
+- **GET /car-wash** - Lista todas as oficinas
+- **GET /car-wash/{id}** - Detalhes de uma oficina específica
+- **PUT /car-wash/{id}** - Atualiza uma oficina existente
+- **DELETE /car-wash/{id}** - Remove uma oficina
+
+O microserviço Users disponibiliza:
+
+- **POST /users** - Adiciona um novo user
+- **GET /users** - Lista todos os users
+- **GET /users/{id}** - Detalhes de um user específico
+- **PUT /users/{id}** - Atualiza um user existente
+- **DELETE /users/{id}** - Remove um user
