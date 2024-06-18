@@ -4,9 +4,9 @@ import jakarta.validation.constraints.NotBlank;
 
 public record CarWashRecordDto(
         @NotBlank String carWashId,
-        @NotBlank String dateMedicalAppointment,
-        @NotBlank String hourMedicalAppointment,
-        @NotBlank String medicalAppointmentState
+        @NotBlank String dateCarWash,
+        @NotBlank String hourCarWash,
+        @NotBlank String carWashState
     ) {
     
 }

@@ -62,13 +62,13 @@ public class UserController {
         BeanUtils.copyProperties(userRecordDto, userModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(userModel));
     }
-    
+
     // Get all record user
     @GetMapping("/users")
     public ResponseEntity<List<UserModel>> getAllUsers() {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findAll());
     }
-    
+
     // Get unique record user
     @GetMapping("/users/{id}")
     public ResponseEntity<Object> getOneUser(@PathVariable(value="id") UUID id) {

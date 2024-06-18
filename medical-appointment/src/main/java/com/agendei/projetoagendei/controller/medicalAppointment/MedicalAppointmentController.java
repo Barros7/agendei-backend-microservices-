@@ -1,5 +1,5 @@
 package com.agendei.projetoagendei.controller.medicalAppointment;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.UUID;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
+@CrossOrigin(origins = "*")
 @RestController
 public class MedicalAppointmentController {
     

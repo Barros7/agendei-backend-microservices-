@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB_MEDICAL_APPOINTMENTS")
+@Table(name = "TB_Car_Washes")
 public class CarWashModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -17,42 +17,32 @@ public class CarWashModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     
     // Declaração de variáveis
-    private UUID medicalAppointmentId;
-    private String patientId;
-    private String dateMedicalAppointment;
-    private String hourMedicalAppointment;
-    private String medicalAppointmentState;
+    private UUID carWashId;
+    private String dateCarWash;
+    private String hourCarWash;
+    private String carWashState;
 
-    // Definição dos Getters e Setters
-    public String getPatientId() {
-        return patientId;
+    public String getDateCarWash() {
+        return dateCarWash;
     }
-
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+    
+    public void setDateCarWash(String dateCarWash) {
+        this.dateCarWash = dateCarWash;
     }
-
-    public String getDateMedicalAppointment() {
-        return dateMedicalAppointment;
+    
+    public String getHourCarWash() {
+        return hourCarWash;
     }
-
-    public void setDateMedicalAppointment(String dateMedicalAppointment) {
-        this.dateMedicalAppointment = dateMedicalAppointment;
+    
+    public void setHourCarWash(String hourCarWash) {
+        this.hourCarWash = hourCarWash;
     }
-
-    public String getHourMedicalAppointment() {
-        return hourMedicalAppointment;
+    
+    public String getCarWashState() {
+        return carWashState;
     }
-
-    public void setHourMedicalAppointment(String hourMedicalAppointment) {
-        this.hourMedicalAppointment = hourMedicalAppointment;
-    }
-
-    public String getMedicalAppointmentState() {
-        return medicalAppointmentState;
-    }
-
-    public void setMedicalAppointmentState(String medicalAppointmentState) {
-        this.medicalAppointmentState = medicalAppointmentState;
+    
+    public void setCarWashState(String carWashState) {
+        this.carWashState = carWashState;
     }
 }
