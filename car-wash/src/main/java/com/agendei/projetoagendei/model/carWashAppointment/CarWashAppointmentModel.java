@@ -24,6 +24,14 @@ public class CarWashAppointmentModel implements Serializable {
     private String hourCarWashAppointment;
     private String carWashAppointmentState;
 
+    public UUID getCarWashAppointmentId() {
+        return carWashAppointmentId;
+    }
+
+    public void setCarWashAppointmentId(UUID carWashAppointmentId) {
+        this.carWashAppointmentId = carWashAppointmentId;
+    }
+
     public String getUserId() {
         return userId;
     }

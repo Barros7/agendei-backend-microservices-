@@ -26,6 +26,14 @@ public class CarWashModel implements Serializable {
     private String speciality;
     private String price;
 
+    public UUID getCarWashId() {
+        return carWashId;
+    }
+
+    public void setCarWashId(UUID carWashId) {
+        this.carWashId = carWashId;
+    }
+
     public String getName() {
         return name;
     }
