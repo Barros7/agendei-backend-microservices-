@@ -22,6 +22,14 @@ public class UserModel implements Serializable {
     private String phone;
     private String password;
 
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
+
     public String getName() {
         return name;
     }

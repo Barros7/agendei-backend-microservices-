@@ -49,7 +49,7 @@ public class UserController {
         UserModel userModel = userRepository.findByEmail(userRecordDto.email());
         
         if (userModel != null && userRepository.findByEmail(userRecordDto.password()) == userRepository.findByEmail(userModel.getPassword())) {
-            return ResponseEntity.ok().body("User authenticated successfully!");
+            return ResponseEntity.ok().body(userModel.getUserId());
         }
         
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed!");
@@ -68,12 +68,21 @@ public class UserController {
     public ResponseEntity<List<UserModel>> getAllUsers() {
         return ResponseEntity.status(HttpStatus.OK).body(userRepository.findAll());
     }
-
+        
     // Get unique record user
     @GetMapping("/users/{id}")
-    public ResponseEntity<Object> getOneUser(@PathVariable(value="id") UUID id) {
-        Optional<UserModel> userModel = userRepository.findById(id);
-        if(userModel.isEmpty()){
+    public ResponseEntity<Object> getOneUser(@PathVariable(value="id") String id) {
+        id = id.replace("\"", "");
+        UUID uuid;
+        
+        try {
+            uuid = UUID.fromString(id);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid UUID format!");
+        }
+    
+        Optional<UserModel> userModel = userRepository.findById(uuid);
+        if (userModel.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No record!");
         }
         return ResponseEntity.status(HttpStatus.OK).body(userModel.get());
